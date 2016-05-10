@@ -24,7 +24,7 @@ redirect_stderr=<%= $redirect_stderr %>
 <% if @stdout_logfile -%>
 stdout_logfile=<%= $stdout_logfile %>
 <% else -%>
-stdout_logfile=/var/log/supervisor/<%= $name -%>/<%= 4name -%>.out
+stdout_logfile=/var/log/supervisor/<%= $name -%>/<%= $name -%>.out
 <% end -%>
 stdout_logfile_maxbytes=<%= $stdout_logfile_maxsize %>
 stdout_logfile_backups=<%= $stdout_logfile_keep %>
