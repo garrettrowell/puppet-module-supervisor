@@ -36,17 +36,17 @@ define supervisor::service (
   $environment              = undef,
   $umask                    = undef
 ) {
-  include supervisor
+  include ::supervisor
 
   case $ensure {
-    absent: {
+    'absent': {
       $autostart = false
       $dir_ensure = 'absent'
       $dir_recurse = true
       $dir_force = true
       $service_ensure = 'stopped'
     }
-    present: {
+    'present': {
       $autostart = true
       $dir_ensure = 'directory'
       $dir_recurse = false

@@ -122,10 +122,10 @@ class supervisor(
   $recurse_config_dir       = false
 ) inherits supervisor::params {
 
-  include supervisor::update
+  include ::supervisor::update
 
   case $ensure {
-    present: {
+    'present': {
       if $autoupgrade == true {
         $package_ensure = 'latest'
       } else {
@@ -133,7 +133,7 @@ class supervisor(
       }
 
       case $service_ensure {
-        running, stopped: {
+        'running', 'stopped': {
           $service_ensure_real = $service_ensure
         }
         default: {
@@ -144,7 +144,7 @@ class supervisor(
       $dir_ensure = 'directory'
       $file_ensure = 'file'
     }
-    absent: {
+    'absent': {
       $package_ensure = 'absent'
       $service_ensure_real = 'stopped'
       $dir_ensure = 'absent'
@@ -170,7 +170,7 @@ class supervisor(
 
   file { [
     '/var/log/supervisor',
-    '/var/run/supervisor'
+    '/var/run/supervisor',
   ]:
     ensure  => $dir_ensure,
     purge   => true,

@@ -1,4 +1,4 @@
-class supervisor::update {
+class supervisor::update inherits supervisor::params {
   exec { 'supervisor::update':
     command     => '/usr/bin/supervisorctl update',
     logoutput   => on_failure,

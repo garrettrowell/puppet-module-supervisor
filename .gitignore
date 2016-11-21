@@ -1,2 +1,8 @@
-*.swp
-*.swo
+.*.swp
+.bundle
+*.lock
+vendor
+spec/fixtures/manifests/*
+spec/fixtures/modules/*
+log
+.vagrant
